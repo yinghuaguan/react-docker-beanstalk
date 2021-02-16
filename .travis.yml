@@ -1,0 +1,10 @@
+language: generic 
+sudo: required 
+services: 
+  - docker
+
+before_install: 
+  - docker build -t yinghuaguan/react-docker-beanstalk -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true yinghuaguan/react-docker-beanstalk npm run test
